@@ -1,30 +1,37 @@
 package edu.uaslp.examen;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class BookCollection {
 
     private String name;
-    private ArrayList<Book> books;
+    private List<Book> books = new ArrayList<>();
 
-    public void BookCollection(String name){
+    public BookCollection(String name){
         this.name = name;
     }
 
-    public String getName(String name) {
-        return this.name;
+    public String getName() {
+        return name;
     }
 
     public void addBook(Book book){
-
+        books.add(book);
     }
 
-    public ArrayList<Book> getBooks() {
+    public List<Book> getBooks() {
         return books;
     }
 
     public int getStars() {
-        int stars=0;
+        int stars = 0;
+
+        for(Book book: books){
+            stars += book.getStars();
+        }
+
+        stars=stars/books.size();
 
         return(stars);
     }
